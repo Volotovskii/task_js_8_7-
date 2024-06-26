@@ -17,7 +17,7 @@
 
 Зайти в папку сайта в файловом менеджере, кликнуть 2 раза по файлу index.html.
 
-Воспользоваться сервисом <a href = "" target="_blank">GitHub Pages</a>
+Воспользоваться сервисом <a href = "https://volotovskii.github.io/task_js_8_7-/" target="_blank">GitHub Pages</a>
 
 ## Критерии оценки
 
