@@ -79,6 +79,7 @@ document.getElementById('btnOver').addEventListener('click', function () {
             const phraseRandom = Math.floor(Math.random() * Questions.length);
 
             const textNumber = numberToText(answerNumber);
+
             if (textNumber.length <= 20) {
                 answerField.innerText = Questions[phraseRandom] + `${textNumber}?`;
             } else {
@@ -110,6 +111,7 @@ document.getElementById('btnLess').addEventListener('click', function () {
             const phraseRandom = Math.floor(Math.random() * Questions.length);
 
             const textNumber = numberToText(answerNumber);
+
             if (textNumber.length <= 20) {
                 answerField.innerText = Questions[phraseRandom] + `${textNumber}?`;
             } else {
@@ -208,7 +210,7 @@ form1.addEventListener('submit', (event) => {
                 if (validateValues(minValue, maxValue)) {
                     // Включение кнопки "Играть"
                     document.getElementById('btnGame').disabled = false;
-                } else document.getElementById('btnGame').disabled = true;
+                } else document.getElementById('btnGame').disabled = false;
             }
         });
 });
@@ -228,7 +230,7 @@ document.getElementById('btnGame').addEventListener('click', function () {
 
         const phraseRandom = Math.floor(Math.random() * Questions.length);
         const textNumber = numberToText(answerNumber);
-   
+
         if (textNumber.length <= 20) {
             answerField.innerText = Questions[phraseRandom] + `${textNumber}?`;
         } else {
@@ -239,6 +241,7 @@ document.getElementById('btnGame').addEventListener('click', function () {
         $('#staticBackdrop').offcanvas('hide');
     }
 });
+
 // Функция для преобразования числа в текст
 function numberToText(number) {
     if (number === 0) {
@@ -252,6 +255,11 @@ function numberToText(number) {
 
     const tens = ["", "", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто"];
 
+    
+    if (number < 0) {
+        return "минус " + numberToText(-number); // Рекурсивный вызов
+    }
+
     if (number < 20) {
         return numbers[number];
     } else if (number < 100) {
@@ -259,6 +267,8 @@ function numberToText(number) {
     } else {
         return (number / 100 === 1 ? "" : numbers[Math.floor(number / 100)]) + " " + "сто" + (number % 100 !== 0 ? " " + numberToText(number % 100) : "");
     }
+
+
 
 }
 // del progres
@@ -294,6 +304,7 @@ function showError(errorType) {
             document.getElementById('validationServer02').value = maxValue;
             errorMessage = "Превышен диапазон вводимого числа минимально число может быть -999, максимальное 999.";
             document.getElementById("message").innerHTML = "Для вашего удобства, применил максимально возможное число.";
+
             break;
         case "iminVal_maxVal":
             errorMessage = "Минимально значение больше чем максимальное.";
